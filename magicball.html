@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+    background: linear-gradient(90deg, skyblue, seagreen);
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+img {
+    padding-left: 10px;
+    margin-top: -200px;
+    padding-top: -100px;
+    }
+button {
+    margin-top: 1px;
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(90deg, skyblue, seagreen);
+    border: 1px solid seagreen;
+}
+.row button{
+    width: 160px;
+    height: 50px;
+    background: linear-gradient(90deg, skyblue, seagreen);
+    border: 1px solid seagreen;
+}
+.row{
+    margin-top: -300px;
+}
+.center {
+    text-align: center;
+    padding-top: 20px;
+}
+input{
+    background: linear-gradient(90deg, skyblue, seagreen);
+    color: white;
+    height: 60px;
+    width: 400px;
+    font-size: 20px;
+    margin-top:0px;
+    border: 2px solid white;
+}
+#fortune{
+    display: none;
+    margin-left: 800px;
+}
+#main{
+    margin-left: 580px;
+    margin-top: 190px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+</style>
+<body>
+    <div class="center">
+    <label>Enter your name please..</label>
+    <input type="text" id="userName">
+    <button class="submit" onclick="welcome()">Enter</button>
+    </div>
+    <div>
+        <p id="main"></p>
+    </div>
+    <div class="middle">
+        <img id="image" src="8ball.png" alt="Magic 8 ball">
+    </div>
+    <div class="row">
+        <button id="fortune" onclick="window.location.href='magicball2.html'">Get Your Fortune</button>
+    </div>
+
+    <script>
+        function welcome(){
+            let uName=document.getElementById("userName").value;
+            let x=document.getElementById("fortune");
+            if (uName!= "") {
+              document.getElementById("main").innerHTML = `Hello,${uName}!`;
+              x.style.display = "initial";
+            }else{
+              document.getElementById("main").innerHTML = `Hello Almighty, It will be easy for me if you will enter your name.!`;
+            }
+        }
+    </script>
+        
+</body>
+</html>

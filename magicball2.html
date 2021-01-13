@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Magic 8 Ball</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+body {
+    background: linear-gradient(90deg, skyblue, seagreen);
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+img {
+    padding-left: 2em;
+}
+button {
+    margin-top: 5em;
+    width: 90px;
+    height: 45px;
+    background: linear-gradient(90deg, skyblue, seagreen);
+    border: 1px solid seagreen;
+}
+.center {
+    text-align: center;
+    padding-top: 2em;
+}
+h1 {
+    font-size: 4em;
+}
+input{
+    background: linear-gradient(90deg, skyblue, seagreen);
+    color: white;
+    height: 60px;
+    width: 400px;
+    font-size: 20px;
+    border: 2px solid white;
+}
+ul{
+    list-style-type: disc;
+    color: white;
+}
+li{
+    cursor: pointer;
+    display: list-item;
+    font-size: 20px;
+}
+li a{
+    color: white;
+    text-decoration: none;
+}
+#questions{
+    margin-left: 590px;
+    margin-top: -400px;
+}
+.shake{
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+</style>
+<body>
+    <div class="center">
+    <label>Enter your question </label>
+    <input type="text" id="userName">
+    <button class="submit" onclick="shake()">Enter</button>
+    <button class="cancel" onclick="window.location.href='magicball2.html'">Try again</button>
+    <button class="cancel" onclick="window.location.href='magicball.html'">Quit</button>
+    </div>
+    <div>
+         <div class="middle">
+            <img id="image" src="8ball.png" alt="Magic 8 ball">
+        </div>
+        <div id="ques">
+        <div id="questions">
+            <h3>click on questions to get prediction</h3>
+            <ul>
+                <li><a onclick="show()" href="#">Will I win the lottery in 2021?</a></li>
+                <li><a onclick="show()" href="#">Will Donald Trump be our next President?</a></li>
+                <li><a onclick="show()" href="#">Will we get more snow this year than last year?</a></li>
+                <li><a onclick="show()" href="#">Should I order pizza tonight?</a></li>
+                <li><a onclick="show()" href="#">Well,should I cook dinner instead?</a></li>
+                <li><a onclick="show()" href="#">Should we do this again?</a></li>
+                <li><a onclick="show()" href="#">Should I skip my surgery and go on vacations?</a></li>
+                <li><a onclick="show()" href="#">Should I start dieting?</a></li>
+                <li><a onclick="show()" href="#">Will I buy a car in 2021?</a></li>
+                <li><a onclick="show()" href="#">Will I be millionare in 2021?</a></li>
+            </ul>
+        </div>
+    </div>
+   </div>
+
+   <script>
+       function shake(){
+           let shakeImage=document.getElementById("image");
+           shakeImage.classList.add("shake");
+            setTimeout(function(){shakeImage.classList.remove("shake");},1000)
+            setTimeout(function(){show();},1000)
+       }
+           function show(){
+           let uname=document.getElementById("username");
+           let answer=document.querySelector("div#questions");
+           let showpara=document.getElementById("ques");
+           let para=document.createElement("p");
+           let randomNumber=Math.floor(Math.random()*8);
+           let eightBall;
+           answer.style.display="none";
+           switch(randomNumber){
+               case 0:
+                    eightBall="It is certain";
+                    break;
+               case 1:
+                    eightBall="It is decidedly so";
+                    break;
+               case 2:
+                    eightBall="Reply hazy try again";
+                    break;
+                case 3:
+                    eightBall="Cannot predict now";
+                    break;
+                case 4:
+                     eightBall="Do not count on it";
+                     break;
+                case 5:
+                     eightBall="My sources say no";
+                     break;
+                case 6:
+                     eightBall="Outlook not so good";
+                     break;
+                case 7:
+                     eightBall="Signs point to yes";
+                     break;
+           }
+           para.textContent=eightBall;
+           showpara.append(para);
+           para.style.marginLeft=650+"px";
+           para.style.marginTop=-300+"px";
+           para.style.fontSize=50+"px";
+        
+    }
+
+   </script>
+</body>
+</html>
